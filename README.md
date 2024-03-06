@@ -37,6 +37,10 @@ The token is needed for authorization and operation of requests from your accoun
 2. For Exsample: ```neo.character.ai/chats/recent/piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo```
 3. Result: ```{"chats": [{"chat_id": "8880583d-fa2c-47f8-89e6-4fcf09c14a38",```
 4. Coppy the chat id
+## Get Chat Author
+1. Same Website Like get chat id
+2. Result: ``` 117205Z", "creator_id": "474480773", "character_id":```
+3. coppy the creator id 
  
 
 ## 📙 Example
@@ -50,9 +54,9 @@ char = "CHAR ID!"
 chat_id = "CHAT ID!"
 
 aut_set ={
-    "author_id": "474480773",
+    "author_id": "<CREATOR ID>",
     "is_human": True,
-    "name": "Falco"
+    "name": "<WRITE YOUR C.AI NAME>"
 }
 
 client = PyAsyncCAI2(owner_id)

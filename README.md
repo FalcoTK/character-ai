@@ -4,7 +4,7 @@
 An unofficial API for Character AI for Python using [tls-client](https://github.com/FlorianREGAZ/Python-Tls-Client)
 and this is a new version of PyCAI
 
-[**https://discord.gg/xxaA8eKMvM**]https://discord.gg/xxaA8eKMvM
+[**https://discord.gg/xxaA8eKMvM**](https://discord.gg/xxaA8eKMvM)
 https://github.com/kpopdev/CharacterAI
 
 ## 💻 Installation

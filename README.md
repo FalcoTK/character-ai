@@ -43,26 +43,31 @@ The token is needed for authorization and operation of requests from your accoun
 
 ## 📙 Example
 ```Python
-from charaiPY.AsyncPyCAI2 import PyAsyncCAI2
-import tls_client as tls
-import asyncio as ass
+from charaiPY.AsyncPyCAI2 import PyAsyncCAI2 #IMPORT THE LIB
+import tls_client as tls #IMPORT LIB
+import asyncio as ass #IMPORT LIB
 
-owner_id = 'TOKEN!'
-char = "CHAR ID!"
-chat_id = "CHAT ID!"
+owner_id = 'TOKEN!' #TOKEN 
+char = "CHAR ID!" #CHAR ID
+chat_id = "CHAT ID!" #CHAT ID
 
 aut_set ={
-    "author_id": "<CREATOR ID>",
-    "is_human": True,
-    "name": "<WRITE YOUR C.AI NAME>"
+    "author_id": "<CREATOR ID>", #CREATOR ID
+    "is_human": True, #PLEASE DONT WRITE TO FALSE
+    "name": "<WRITE YOUR C.AI NAME>" #YOUR CAI NAME 
 }
 
-client = PyAsyncCAI2(owner_id)
+client = PyAsyncCAI2(owner_id) #inport owner id
 
 async def main():
-    message = input("You:")
-    async with client.connect(owner_id) as chat2:
-        r = await chat2.send_message(char, chat_id, message, aut_set, Return_name=True)
+    message = input("You:") #input text
+#how this work?
+#i use websockets ti get connectio
+    async with client.connect(owner_id) as chat2: #Make connection to server
+        r = await chat2.send_message(char,
+                 chat_id, message, aut_set,
+                 Return_name=True) #ALL VARIABLE WILL SENT TO SERVER
+#IF YOU WANT TO THE OUTPUT WHITHOUT NAME YOH CAN DO RETURN_NAME=FALSE
         print(r)
 
 while True:

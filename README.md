@@ -6,7 +6,7 @@ and this is a new version of PyCAI
 
 # 💬 PyCAI1
 this is the frist version 
-![Tag](https://github.com/kpopdev/CharacterAI)
+(https://github.com/kpopdev/CharacterAI)
 
 # 🏅 My Comunity
 **THIS IS VERSION 2.0.2 UNDER DEVLOP PLEASE JOIN THE SERVER FOR NEW UPDATE!**

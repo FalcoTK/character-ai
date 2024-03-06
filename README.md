@@ -1,5 +1,6 @@
 # 💬 PyCAI2
 ![Tag](https://img.shields.io/github/license/kramcat/CharacterAI)
+
 An unofficial API for Character AI for Python using [tls-client](https://github.com/FlorianREGAZ/Python-Tls-Client)
 and this is a new version of PyCAI
 

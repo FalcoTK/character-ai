@@ -4,11 +4,14 @@
 An unofficial API for Character AI for Python using [tls-client](https://github.com/FlorianREGAZ/Python-Tls-Client)
 and this is a new version of PyCAI
 
-**THIS IS VERSION 2.0.2 UNDER DEVLOP PLEASE JOIN THE SERVER FOR NEW UPDATE!**
+# 💬 PyCAI1
+this is the frist version 
+![Tag](https://github.com/kpopdev/CharacterAI)
 
 # 🏅 My Comunity
+**THIS IS VERSION 2.0.2 UNDER DEVLOP PLEASE JOIN THE SERVER FOR NEW UPDATE!**
 [**https://discord.gg/xxaA8eKMvM**](https://discord.gg/xxaA8eKMvM)
-https://github.com/kpopdev/CharacterAI
+
 
 ## 💻 Installation
 ```bash

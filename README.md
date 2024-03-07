@@ -13,12 +13,6 @@ this is the frist version
 [**https://discord.gg/xxaA8eKMvM**](https://discord.gg/xxaA8eKMvM)
 
 
-<details><summary>hello</summary>
-
-hi
-
-</details>
-
 ## 💻 Installation
 ```bash
 pip install PyCAI2

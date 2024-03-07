@@ -2,7 +2,7 @@
 An unofficial API for Character AI for Python using [tls-client](https://github.com/FlorianREGAZ/Python-Tls-Client)
 and this is a new version of PyCAI
 
-# 💬 PyCAI1
+ 💬 PyCAI1
 this is the frist version 
 (https://github.com/kpopdev/CharacterAI)
 

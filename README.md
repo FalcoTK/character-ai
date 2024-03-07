@@ -9,8 +9,7 @@ this is the frist version
 (https://github.com/kpopdev/CharacterAI)
 
 # ❓ DOCS
-click to go docs of PyCAI2 
-[![DOCS](https://tokais-creator.gitbook.io/pycai2/)
+click to go docs of PyCAI2 (https://tokais-creator.gitbook.io/pycai2/)
 
 # 🏅 My Comunity
 **THIS IS VERSION 2.0.2 UNDER DEVLOP PLEASE JOIN THE SERVER FOR NEW UPDATE!**

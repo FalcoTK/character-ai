@@ -15,7 +15,7 @@ this is the frist version
 ```bash
 pip install PyCAI2
 ```
-## 🔑 Get Token 
+🔑 Get Token 
 DO NOT SHARE IT
 The token is needed for authorization and operation of requests from your account
 1. Open DevTools in your browser
@@ -23,19 +23,20 @@ The token is needed for authorization and operation of requests from your accoun
 3. Copy `value`
 
 
-## 📬 Get Char ID
+📬 Get Char ID
 1. Open char with chat2
 2. like this:```https://beta.character.ai/chat2?char=piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo&source=recent-chats```
 3. coppy from char= till &source=
 4. like this:
 5. ```piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo```
 
-## 👻 Get Chat ID
+👻 Get Chat ID
 1. Go to: ```neo.character.ai/chats/recent/ <CHAR ID>```
 2. For Exsample: ```neo.character.ai/chats/recent/piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo```
 3. Result: ```{"chats": [{"chat_id": "8880583d-fa2c-47f8-89e6-4fcf09c14a38",```
 4. Coppy the chat id
-## Get Chat Author
+
+🕵️ Get Chat Author
 1. Same Website Like get chat id
 2. Result: ``` 117205Z", "creator_id": "474480773", "character_id":```
 3. coppy the creator id 

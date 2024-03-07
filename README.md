@@ -1,4 +1,5 @@
 # 💬 PyCAI2
+[![Downloads](https://static.pepy.tech/badge/pycai2)](https://pepy.tech/project/pycai2)
 An unofficial API for Character AI for Python using [tls-client](https://github.com/FlorianREGAZ/Python-Tls-Client)
 and this is a new version of PyCAI
 

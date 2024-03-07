@@ -8,8 +8,10 @@ and this is a new version of PyCAI
 this is the frist version 
 (https://github.com/kpopdev/CharacterAI)
 
-# ❓ DOCS
-click to go docs of PyCAI2 (https://tokais-creator.gitbook.io/pycai2/)
+# ❓ DOCS & example 
+click to go docs of PyCAI2 [CLICK ME](https://tokais-creator.gitbook.io/pycai2/)
+
+Discord bot with PyCAI2 [Click Here](https://github.com/FalcoTK/PyCAI2-Discord)
 
 # 🏅 My Comunity
 **THIS IS VERSION 2.0.2 UNDER DEVLOP PLEASE JOIN THE SERVER FOR NEW UPDATE!**

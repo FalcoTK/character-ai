@@ -2,19 +2,17 @@
 [![Downloads](https://static.pepy.tech/badge/pycai2)](https://pepy.tech/project/pycai2)
 
 An unofficial API for Character AI for Python using [tls-client](https://github.com/FlorianREGAZ/Python-Tls-Client)
-and this is a new version of PyCAI
 
  💬 PyCAI1
-this is the frist version 
-(https://github.com/kpopdev/CharacterAI)
+(https://github.com/kramcat/CharacterAI)
 
-# ❓ DOCS & example 
-click to go docs of PyCAI2 [CLICK ME](https://tokais-creator.gitbook.io/pycai2/)
+# ❓ DOCS & EXAMPLE
+Docs: PyCAI2 [Click Here](https://tokais-creator.gitbook.io/pycai2/)
 
-Discord bot with PyCAI2 [Click Here](https://github.com/FalcoTK/PyCAI2-Discord)
+Discord bot with PyCAI2: [Click Here](https://github.com/FalcoTK/PyCAI2-Discord)
 
-# 🏅 My Comunity
-**THIS IS VERSION 2.0.2 UNDER DEVLOP PLEASE JOIN THE SERVER FOR NEW UPDATE!**
+# 🏅 My Community
+**THIS IS VERSION 2.0.5 UNDER DEVELOP, PLEASE JOIN THE SERVER FOR NEW UPDATE!**
 [**https://discord.gg/xxaA8eKMvM**](https://discord.gg/xxaA8eKMvM)
 
 
@@ -22,6 +20,7 @@ Discord bot with PyCAI2 [Click Here](https://github.com/FalcoTK/PyCAI2-Discord)
 ```bash
 pip install PyCAI2
 ```
+
 🔑 Get Token 
 DO NOT SHARE IT
 The token is needed for authorization and operation of requests from your account
@@ -29,26 +28,24 @@ The token is needed for authorization and operation of requests from your accoun
 2. Go to Storage -> Local Storage -> char_token
 3. Copy `value`
 
-
 📬 Get Char ID
 1. Open char with chat2
 2. like this:```https://beta.character.ai/chat2?char=piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo&source=recent-chats```
-3. coppy from char= till &source=
-4. like this:
+3. Copy from char= till &source=
+4. Like this:
 5. ```piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo```
 
 👻 Get Chat ID
 1. Go to: ```neo.character.ai/chats/recent/ <CHAR ID>```
-2. For Exsample: ```neo.character.ai/chats/recent/piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo```
+2. For example: ```neo.character.ai/chats/recent/piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo```
 3. Result: ```{"chats": [{"chat_id": "8880583d-fa2c-47f8-89e6-4fcf09c14a38",```
 4. Coppy the chat id
 
 🕵️ Get Chat Author
-1. Same Website Like get chat id
+1. Same steps to Chat ID, instead get Chat ID
 2. Result: ``` 117205Z", "creator_id": "474480773", "character_id":```
-3. coppy the creator id 
+3. Copy the creator id 
  
-
 ## 📙 Example
 ```Python
 from charaiPY.AsyncPyCAI2 import PyAsyncCAI2 #IMPORT THE LIB
@@ -65,7 +62,7 @@ aut_set ={
     "name": "<WRITE YOUR C.AI NAME>" #YOUR CAI NAME 
 }
 
-client = PyAsyncCAI2(owner_id) #inport owner id
+client = PyAsyncCAI2(owner_id) #import owner id
 
 async def main():
     message = input("You:") #input text

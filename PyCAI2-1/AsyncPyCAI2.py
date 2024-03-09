@@ -1,7 +1,12 @@
 from contextlib import asynccontextmanager
+from PIL import Image
+import io
 import websockets
 import tls_client as tls
 import json
+import base64
+from pydub import AudioSegment
+from io import BytesIO
 from typing import Optional
 from easygoogletranslate import EasyGoogleTranslate as esgt
 
@@ -51,7 +56,7 @@ class PyAsyncCAI2:
         else: sub = 'beta'
 
         self.session = tls.Session(
-            client_identifier='chrome112'
+            client_identifier='okhttp4_android_13'
         )
 
         setattr(self.session, 'url', f'https://{sub}.character.ai/')
@@ -64,7 +69,7 @@ class PyAsyncCAI2:
         url: str, session: tls.Session,
         *, token: str = None, method: str = 'GET',
         data: dict = None, split: bool = False,
-        neo: bool = False, 
+        split2: bool = False, neo: bool = False, 
     ):
         
 
@@ -104,6 +109,9 @@ class PyAsyncCAI2:
 
         if split:
             data = json.loads(response.text.split('\n')[-2])
+        elif split2:
+            lines = response.text.strip().split('\n')
+            data = [json.loads(line) for line in lines if line.strip()] # List
         else:
             data = response.json()
 
@@ -158,6 +166,74 @@ class PyAsyncCAI2:
             self.token = token
             self.session = session
 
+        async def room_chat(
+            self, characterId: str, voiceId: str, 
+            text: str, *, token: str = None,
+            **kwargs
+        ):
+            response = await PyAsyncCAI2.request(
+                'chat/streaming/', self.session,
+                token=token, method='POST', split2='True',
+                data={
+                    "character_external_id": characterId,
+                    "enable_tti": None,
+                    "filter_candidates": None,
+                    "give_room_introductions": True,
+                    "history_external_id": voiceId,
+                    "image_description": "",
+                    "image_description_type": "",
+                    "image_origin_type": "",
+                    "image_rel_path": "",
+                    "initial_timeout": None,
+                    "insert_beginning": None,
+                    "is_proactive": False,
+                    "mock_response": False,
+                    "model_properties_version_keys": "",
+                    "model_server_address": None,
+                    "model_server_address_exp_chars": None,
+                    "num_candidates": 1,
+                    "override_prefix": None,
+                    "override_rank": None,
+                    "parent_msg_uuid": None,
+                    "prefix_limit": None,
+                    "prefix_token_limit": None,
+                    "rank_candidates": None,
+                    "ranking_method": "random",
+                    "retry_last_user_msg_uuid": None,
+                    "rooms_prefix_method": "",
+                    "seen_msg_uuids": [],
+                    "staging": False,
+                    "stream_every_n_steps": 16,
+                    "stream_params": None,
+                    "text": text,
+                    "tgt": None,
+                    "traffic_source": None,
+                    "unsanitized_characters": None,
+                    "voice_enabled": True,
+                    **kwargs
+                }
+            )
+
+            merged_audio = AudioSegment.silent(duration=0)
+
+            for i, json_parsed in enumerate(response):
+                replies = json_parsed.get("replies", [])
+
+                for reply in replies:
+                    text = reply.get("text", "")
+
+                encode = json_parsed.get("speech", "")
+                if encode:
+                    decode = base64.b64decode(encode)
+                    audio = AudioSegment.from_file(BytesIO(decode))
+                    merged_audio += audio
+                else:
+                    print(f"Skipping .json #{i}") # Intentionally skips due to how c.ai api works
+
+            # Exporting the merged audio to voice.mp3
+            merged_audio.export("voice.mp3", format="mp3")
+
+            return {"text": text, "voice": "voice.mp3"}
 
         async def next_message(
             self, history_id: str, parent_msg_uuid: str,
@@ -305,9 +381,10 @@ class PyAsyncCAI2:
                     else: return response
 
         async def create_img(
-                self, char:str,chat_id:str,text:str,
-                author:dict= None,Return_img:bool = True,Return_all: bool= False,*,turn_id: str = None,
-                custom_id: str = None,candidate_id: str = None
+            self, char: str, chat_id: str, text: str,
+            author: dict = None, Return_img: bool = True, 
+            Return_all: bool = False, *, turn_id: str = None,
+            custom_id: str = None, candidate_id: str = None
         ):
             if custom_id != None:
                 turn_key = {
@@ -357,15 +434,13 @@ class PyAsyncCAI2:
                         if Return_img:
                             r = response['turn']['candidates'][0]['tti_image_rel_path']
                             return r
-           
 
         async def send_message(
             self, char: str, chat_id: str,
             text: str, author: dict = None,
             *, turn_id: str = None, custom_id: str = None,
-            candidate_id: str = None, Return_name:bool = False
+            candidate_id: str = None, Return_name: bool = False
         ):  
-           
 
             if custom_id != None:
                 turn_key = {

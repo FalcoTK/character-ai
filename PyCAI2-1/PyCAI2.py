@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 import websockets
 import json
 import base64
+import imageio_ffmpeg as ffmpeg
 from curl_cffi.requests import Session
 from pydub import AudioSegment
 from io import BytesIO
@@ -228,7 +229,7 @@ class PyAsyncCAI2:
                 encode = json_parsed.get("speech", "")
                 if encode:
                     decode = base64.b64decode(encode)
-                    audio = AudioSegment.from_file(BytesIO(decode))
+                    audio = AudioSegment.from_file(BytesIO(decode), format="wav", codec=ffmpeg)
                     merged_audio += audio
                 else:
                     print(f"Skipping .json #{i}") # Intentionally skips due to how c.ai api works

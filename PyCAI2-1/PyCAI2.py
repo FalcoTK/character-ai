@@ -1,8 +1,8 @@
 from contextlib import asynccontextmanager
 import websockets
-import tls_client as tls
 import json
 import base64
+from curl_cffi.requests import Session
 from pydub import AudioSegment
 from io import BytesIO
 import asyncio
@@ -18,7 +18,6 @@ import asyncio
                                                            
 # BUILD BY @Falco_TK (https://github.com/FalcoTK)
 # CODE  BY @kramcat  (https://github.com/kramcat)
-# PATCH BY @kpopdev  (https://github.com/kpopdev)
 
 # PyCAI V1: https://github.com/kramcat/CharacterAI (docs: https://pycai.gitbook.io/welcome/)
 # PyCAI V2: (docs: )
@@ -53,8 +52,10 @@ class PyAsyncCAI2:
         if plus: sub = 'plus'
         else: sub = 'beta'
 
-        self.session = tls.Session(
-            client_identifier='okhttp4_android_13'
+        self.session = Session(
+            headers={
+                'User-Agent': 'okhttp/5.0.0-SNAPSHOT'
+            }
         )
 
         setattr(self.session, 'url', f'https://{sub}.character.ai/')
@@ -64,7 +65,7 @@ class PyAsyncCAI2:
         self.chat2 = self.chat2(token, None, self.session)
 
     async def request(
-        url: str, session: tls.Session,
+        url: str, session: Session,
         *, token: str = None, method: str = 'GET',
         data: dict = None, split: bool = False,
         split2: bool = False, neo: bool = False, 
@@ -82,12 +83,7 @@ class PyAsyncCAI2:
             key = token
 
         headers = {
-            'User-Agent': 'okhttp/5.0.0-SNAPSHOT',
-            'Accept': 'application/json, text/plain, */*',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Referer': 'https://beta.character.ai/',
             'Authorization': f'Token {key}',
-            'Origin': 'https://beta.character.ai',
         }
 
         if method == 'GET':
@@ -155,11 +151,6 @@ class PyAsyncCAI2:
                     'wss://neo.character.ai/ws/',
                      extra_headers = {
                         'Cookie': f'HTTP_AUTHORIZATION="Token {key}"',
-                        'origin': 'https://neo.character.ai',
-                        'Upgrade': 'websocket',
-                        'Sec-WebSocket-Extensions': 'permessage-deflate',
-                        'Host': 'neo.character.ai',
-                        'User-Agent': 'okhttp/5.0.0-SNAPSHOT',
                     }  
                 )
             except websockets.exceptions.InvalidStatusCode:
@@ -173,7 +164,7 @@ class PyAsyncCAI2:
 
     class chat:
         def __init__(
-            self, token: str, session: tls.Session
+            self, token: str, session: Session
         ):
             self.token = token
             self.session = session
@@ -352,7 +343,7 @@ class PyAsyncCAI2:
         def __init__(
             self, token: str,
             ws: websockets.WebSocketClientProtocol,
-            session: tls.Session
+            session: Session
         ):
             self.token = token
             self.session = session
@@ -528,8 +519,10 @@ class PyCAI:
         if plus: sub = 'plus'
         else: sub = 'beta'
 
-        self.session = tls.Session(
-            client_identifier='chrome112'
+        self.session = Session(
+            headers={
+                'User-Agent': 'okhttp/5.0.0-SNAPSHOT'
+            }
         )
 
         setattr(self.session, 'url', f'https://{sub}.character.ai/')
@@ -539,7 +532,7 @@ class PyCAI:
         self.Nchat = self.Nchat(token, self.session)
 
     def request(
-        url: str, session: tls.Session,
+        url: str, session: Session,
         *, token: str = None, method: str = 'GET',
         data: dict = None, split: bool = False,
         neo: bool = False
@@ -555,12 +548,7 @@ class PyCAI:
             key = token
 
         headers = {
-            'User-Agent': 'okhttp/5.0.0-SNAPSHOT',
-            'Accept': 'application/json, text/plain, */*',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Referer': 'https://beta.character.ai/',
             'Authorization': f'Token {key}',
-            'Origin': 'https://beta.character.ai',
         }
 
         if method == 'GET':
@@ -615,7 +603,7 @@ class PyCAI:
     
     class Nchat:
         def __init__(
-            self, token: str, session: tls.Session
+            self, token: str, session: Session
         ):
             self.token = token
             self.session = session

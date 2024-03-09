@@ -2,15 +2,13 @@ from contextlib import asynccontextmanager
 from PIL import Image
 import io
 import websockets
-import tls_client as tls
 import json
 import base64
+from curl_cffi.requests import Session
 from pydub import AudioSegment
 from io import BytesIO
 from typing import Optional
 from easygoogletranslate import EasyGoogleTranslate as esgt
-
-
 
 # ______         ______ _______ _______ ______ 
 # |   __ \ __ __ |      |   _   |_     _|__    |
@@ -21,8 +19,6 @@ from easygoogletranslate import EasyGoogleTranslate as esgt
                                                            
 # BUILD BY @Falco_TK (https://github.com/FalcoTK)
 # CODE  BY @kramcat  (https://github.com/kramcat)
-# PATCH BY @kpopdev  (https://github.com/kpopdev)
-
 
 # PLEASE IF YOU HAVE SOMTING WRONG DM ME IN DISCORD ASAP! (discord: tokaifalco_)                                                  
 # ==================================================
@@ -45,7 +41,6 @@ class AuthError(PyCAI2EX):
 class PostTypeError(PyCAI2EX):
     pass
 
-
 class PyAsyncCAI2:
     def __init__(
         self, token: str = None, plus: bool = False
@@ -55,8 +50,10 @@ class PyAsyncCAI2:
         if plus: sub = 'plus'
         else: sub = 'beta'
 
-        self.session = tls.Session(
-            client_identifier='okhttp4_android_13'
+        self.session = Session(
+            headers={
+                'User-Agent': 'okhttp/5.0.0-SNAPSHOT'
+            }
         )
 
         setattr(self.session, 'url', f'https://{sub}.character.ai/')
@@ -66,12 +63,11 @@ class PyAsyncCAI2:
         self.chat2 = self.chat2(token, None, self.session)
 
     async def request(
-        url: str, session: tls.Session,
+        url: str, session: Session,
         *, token: str = None, method: str = 'GET',
         data: dict = None, split: bool = False,
         split2: bool = False, neo: bool = False, 
     ):
-        
 
         if neo:
             link = f'https://neo.character.ai/{url}'
@@ -84,12 +80,7 @@ class PyAsyncCAI2:
             key = token
 
         headers = {
-            'User-Agent': 'okhttp/5.0.0-SNAPSHOT',
-            'Accept': 'application/json, text/plain, */*',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Referer': 'https://beta.character.ai/',
             'Authorization': f'Token {key}',
-            'Origin': 'https://beta.character.ai',
         }
 
         if method == 'GET':
@@ -144,11 +135,6 @@ class PyAsyncCAI2:
                     'wss://neo.character.ai/ws/',
                      extra_headers = {
                         'Cookie': f'HTTP_AUTHORIZATION="Token {key}"',
-                        'origin': 'https://neo.character.ai',
-                        'Upgrade': 'websocket',
-                        'Sec-WebSocket-Extensions': 'permessage-deflate',
-                        'Host': 'neo.character.ai',
-                        'User-Agent': 'okhttp/5.0.0-SNAPSHOT',
                     }  
                 )
             except websockets.exceptions.InvalidStatusCode:
@@ -158,10 +144,9 @@ class PyAsyncCAI2:
         finally:
             await self.ws.close()  
 
-
     class chat:
         def __init__(
-            self, token: str, session: tls.Session
+            self, token: str, session: Session
         ):
             self.token = token
             self.session = session
@@ -340,7 +325,7 @@ class PyAsyncCAI2:
         def __init__(
             self, token: str,
             ws: websockets.WebSocketClientProtocol,
-            session: tls.Session
+            session: Session
         ):
             self.token = token
             self.session = session
@@ -382,8 +367,7 @@ class PyAsyncCAI2:
 
         async def create_img(
             self, char: str, chat_id: str, text: str,
-            author: dict = None, Return_img: bool = True, 
-            Return_all: bool = False, *, turn_id: str = None,
+            author: dict = None, Return_img: bool = True, Return_all: bool = False, *, turn_id: str = None,
             custom_id: str = None, candidate_id: str = None
         ):
             if custom_id != None:
@@ -553,7 +537,5 @@ class PyAsyncCAI2:
                     'turn_ids': turn_ids
                 }
             }
-
             await self.ws.send(json.dumps(payload))
             return json.loads(await self.ws.recv())
-        

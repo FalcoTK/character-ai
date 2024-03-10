@@ -170,7 +170,7 @@ class PyAsyncCAI2:
             self.session = session
 
         async def room_chat(
-            self, characterId: str, voiceId: str, 
+            self, characterId: str, roomId: str, 
             text: str, *, token: str = None,
             **kwargs
         ):
@@ -182,7 +182,7 @@ class PyAsyncCAI2:
                     "enable_tti": None,
                     "filter_candidates": None,
                     "give_room_introductions": True,
-                    "history_external_id": voiceId,
+                    "history_external_id": roomId,
                     "image_description": "",
                     "image_description_type": "",
                     "image_origin_type": "",

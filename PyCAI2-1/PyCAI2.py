@@ -7,8 +7,6 @@ from pydub import AudioSegment
 from io import BytesIO
 import asyncio
 
-
-
 # ______         ______ _______ _______ ______ 
 # |   __ \ __ __ |      |   _   |_     _|__    |
 # |    __/|  |  ||   ---|       |_|   |_|    __|

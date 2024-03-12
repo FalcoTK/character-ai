@@ -1,5 +1,4 @@
 from contextlib import asynccontextmanager
-from PIL import Image
 import io
 import websockets
 import json

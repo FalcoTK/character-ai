@@ -21,6 +21,7 @@ An unofficial Python API for Character AI using [curl-cffi](https://github.com/y
 pip install PyCAI2
 ```
 - Donwload FFMPG : https://www.ffmpeg.org/download.html
+- guide to install FFMPG: https://youtu.be/IECI72XEox0?si=FFJXulNUZI0AM82y
 
 ### 🔑 Get Token 
 - **DO NOT SHARE IT**

@@ -20,6 +20,7 @@ An unofficial Python API for Character AI using [curl-cffi](https://github.com/y
 ```bash
 pip install PyCAI2
 ```
+- Donwload FFMPG : https://www.ffmpeg.org/download.html
 
 ### 🔑 Get Token 
 - **DO NOT SHARE IT**

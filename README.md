@@ -9,7 +9,7 @@ An unofficial Python API for Character AI using [curl-cffi](https://github.com/y
 
 ## ❓ Docs & Example
 
-- Docs for PyCAI2: [https://tokais-creator.gitbook.io/pycai2](https://tokais-creator.gitbook.io/pycai2)
+- Docs for PyCAI2: [https://pycai-two.gitbook.io/pycai2/](https://pycai-two.gitbook.io/pycai2/)
 - Discord bot with PyCAI2: [https://github.com/FalcoTK/PyCAI2-Discord](https://github.com/FalcoTK/PyCAI2-Discord)
 
 ## 🏅 Community

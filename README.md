@@ -49,34 +49,67 @@ pip install PyCAI2
 
 ## 📙 Example
 ```python
-from charaiPY.AsyncPyCAI2 import PyAsyncCAI2 # IMPORT THE LIB
-import tls_client as tls # IMPORT LIB
-import asyncio as ass # IMPORT LIB
+from PyCAI2 import PyAsyncCAI2
 
-owner_id = 'TOKEN!' # TOKEN 
-char = "CHAR ID!" # CHAR ID
-chat_id = "CHAT ID!" # CHAT ID
+owner_id = '54dbda---------'
+char = "piwvxvcMQFwb----------"
+room_id = "TiqLm-------------"
+voice_target = "E:\\FOLDER\\FOLDER\\FOLDER\\FOLDER\\FOLDER"
 
-aut_set ={
-    "author_id": "<CREATOR ID>", # CREATOR ID
-    "is_human": True, # PLEASE DON'T WRITE TO FALSE
-    "name": "<WRITE YOUR C.AI NAME>" # YOUR CAI NAME 
-}
-
-client = PyAsyncCAI2(owner_id) # IMPORT OWNER ID
+clinet = PyAsyncCAI2(owner_id)
 
 async def main():
-    message = input("You:") # INPUT TEXT
-    # How this works?
-    # I use websockets to get connection
-    async with client.connect(owner_id) as chat2: # Make a connection to the server
-        r = await chat2.send_message(char,
-                 chat_id, message, aut_set,
-                 Return_name=True) # ALL VARIABLES WILL BE SENT TO SERVER
-        # IF YOU WANT THE OUTPUT WITHOUT NAME, YOU CAN SET RETURN_NAME=False
-        print(r)
+    message = input("You: ")
+     
+    # TRANSLATE 
+    #TRANSLATE FROM INDONESIA TO ENG
+    await clinet.chat2.transl(text=message,target='en',source='id') 
 
-while True:
-    ass.run(main())
+    # GET HISTORIES
+    await clinet.chat2.get_histories(char=char)
+    
+    # GET HISTORY
+    await clinet.chat2.get_history(char=char)
+
+    # GET AVATAR
+    await clinet.chat2.get_avatar(char=char)
+
+    # CREATE IMAGE
+    async with clinet.connect(owner_id) as chat2:
+        # RETUR MESSAGE + IMAGE LINK 
+        await chat2.create_img(char=char,text=message,
+                               author_name='FALCO',
+                               Return_all=True)
+        # RETURN IMAGE LINK
+        await chat2.create_img(char=char,text=message,
+                               author_name='FALCO',
+                               Return_img=True)
+        
+    # SEND MESSAGE
+    async with clinet.connect(owner_id) as chat2:
+        # RETURN W NAME {(CHAR NAME) + MESSAGE}
+        await chat2.send_message(char=char,
+                                 text=message,
+                                 author_name="FALCO",
+                                 Return_name=True)
+        
+        # RETURN WITHOUT NAME (MESSAGE)
+        await chat2.send_message(char=char,
+                                 text=message,
+                                 author_name="FALCO",
+                                 Return_name=False)
+    
+    # NEW CHAT
+    async with clinet.connect(owner_id) as chat2:
+        # RETURN WITH GREETING
+        await chat2.new_chat(char=char,with_greeting=True)
+
+        # RETURN WITHOUT GREETING 
+        await chat2.new_chat(char=char,with_greeting=False)
+
+    # DELATE MESSAGE 
+    async with clinet.connect(owner_id) as chat2:
+        # GET TURN ID FROM HISTORY FUNCTION!
+        await chat2.delete_message(char=char, turn_ids=trun_id)
 ```
 

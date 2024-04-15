@@ -115,7 +115,6 @@ async def main():
 
 ## 🌟 Star History
 
-<a href="https://star-history.com/#FalcoTK/PyCAI2&Date">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date&theme=dark" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date" />

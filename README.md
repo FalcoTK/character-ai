@@ -113,3 +113,6 @@ async def main():
         await chat2.delete_message(char=char, turn_ids=trun_id)
 ```
 
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date)](https://star-history.com/#FalcoTK/PyCAI2&Date)

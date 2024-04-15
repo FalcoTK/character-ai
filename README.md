@@ -114,7 +114,6 @@ async def main():
 ```
 
 ## 🌟 Star History
-## Star History
 
 <a href="https://star-history.com/#FalcoTK/PyCAI2&Date">
  <picture>

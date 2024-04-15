@@ -114,5 +114,12 @@ async def main():
 ```
 
 ## 🌟 Star History
+## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date)](https://star-history.com/#FalcoTK/PyCAI2&Date)
+<a href="https://star-history.com/#FalcoTK/PyCAI2&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date" />
+ </picture>
+</a>

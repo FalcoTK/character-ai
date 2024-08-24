@@ -1,53 +1,64 @@
+Here’s an improved version of the README, with the announcement included and without the star history section:
+
+---
+
 # 💬 PyCAI2
 
 [![Downloads](https://static.pepy.tech/badge/pycai2)](https://pepy.tech/project/pycai2)
 
 An unofficial Python API for Character AI using [curl-cffi](https://github.com/yifeikong/curl_cffi).
 
- 💬 PyCAI1
-(https://github.com/kramcat/CharacterAI)
+**⚠️ ANNOUNCEMENT:**  
+This project is scheduled to be discontinued. However, a new and improved version, `PyCAI3`, will be released soon in a different repository. Stay tuned for updates here: [PyCAI3 Repository](https://github.com/FalcoTK/PyCAI3).
 
-## ❓ Docs & Example
+## ❓ Documentation & Examples
 
-- Docs for PyCAI2: [https://pycai-two.gitbook.io/pycai2/](https://pycai-two.gitbook.io/pycai2/)
-- Discord bot with PyCAI2: [https://github.com/FalcoTK/PyCAI2-Discord](https://github.com/FalcoTK/PyCAI2-Discord)
+- [PyCAI2 Documentation](https://pycai-two.gitbook.io/pycai2/)
+- [PyCAI2 Discord Bot Example](https://github.com/FalcoTK/PyCAI2-Discord)
 
 ## 🏅 Community
-**THIS IS VERSION 2.0.5 UNDER DEVELOPMENT. PLEASE JOIN THE SERVER FOR NEW UPDATES!
-[https://discord.gg/xxaA8eKMvM](https://discord.gg/xxaA8eKMvM)**
+
+Join our Discord server for updates and support: [https://discord.gg/xxaA8eKMvM](https://discord.gg/xxaA8eKMvM).
 
 ## 💻 Installation
+
 ```bash
 pip install PyCAI2
 ```
-- Donwload FFMPG : https://www.ffmpeg.org/download.html
-- guide to install FFMPG: https://youtu.be/IECI72XEox0?si=FFJXulNUZI0AM82y
 
-### 🔑 Get Token 
-- **DO NOT SHARE IT**
-- The token is needed for authorization and operation of requests from your account.
+1. Download FFmpeg: [https://www.ffmpeg.org/download.html](https://www.ffmpeg.org/download.html)
+2. Follow the installation guide: [FFmpeg Installation Guide](https://youtu.be/IECI72XEox0?si=FFJXulNUZI0AM82y)
+
+## 🔑 How to Get Your Token
+
+**Do not share your token.** The token is needed for authorization and operation of requests from your account.
+
 1. Open DevTools in your browser.
 2. Go to Storage -> Local Storage -> `char_token`.
 3. Copy the `value`.
 
-### 📬 Get Char ID
-1. Open 'char' with 'chat2'.
+## 📬 How to Get Character ID
+
+1. Open a character chat in `chat2`.
 2. Example URL: `https://beta.character.ai/chat2?char=piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo&source=recent-chats`.
-3. Copy from `char=` till `&source=`.
+3. Copy from `char=` until `&source=`.
 4. Example: `piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo`.
 
-### 👻 Get Chat ID
-1. Go to: `neo.character.ai/chats/recent/ <CHAR ID>`.
+## 👻 How to Get Chat ID
+
+1. Go to: `neo.character.ai/chats/recent/<CHAR ID>`.
 2. Example URL: `neo.character.ai/chats/recent/piwvxvcMQFwbQXCQpJdzbqPMg9ck4FaYi4NWM86ERXo`.
-3. Result: `{"chats": [{"chat_id": "8880583d-fa2c-47f8-89e6-4fcf09c14a38",`.
-4. Copy the chat ID.
+3. Look for the following JSON key: `{"chats": [{"chat_id": "8880583d-fa2c-47f8-89e6-4fcf09c14a38",`.
+4. Copy the `chat_id`.
 
-### 🕵️ Get Chat Author
-1. Same steps as getting Chat ID, instead, get Chat Author.
-2. Result: `117205Z", "creator_id": "474480773", "character_id":`.
-3. Copy the creator ID.
+## 🕵️ How to Get Chat Author ID
 
-## 📙 Example
+1. Follow the steps to get the Chat ID.
+2. Look for the following JSON key: `"creator_id": "474480773"`.
+3. Copy the `creator_id`.
+
+## 📙 Usage Example
+
 ```python
 from PyCAI2 import PyAsyncCAI2
 
@@ -56,68 +67,46 @@ char = "piwvxvcMQFwb----------"
 room_id = "TiqLm-------------"
 voice_target = "E:\\FOLDER\\FOLDER\\FOLDER\\FOLDER\\FOLDER"
 
-clinet = PyAsyncCAI2(owner_id)
+client = PyAsyncCAI2(owner_id)
 
 async def main():
     message = input("You: ")
-     
-    # TRANSLATE 
-    #TRANSLATE FROM INDONESIA TO ENG
-    await clinet.chat2.transl(text=message,target='en',source='id') 
+
+    # TRANSLATE FROM INDONESIAN TO ENGLISH
+    await client.chat2.transl(text=message, target='en', source='id')
 
     # GET HISTORIES
-    await clinet.chat2.get_histories(char=char)
-    
+    await client.chat2.get_histories(char=char)
+
     # GET HISTORY
-    await clinet.chat2.get_history(char=char)
+    await client.chat2.get_history(char=char)
 
     # GET AVATAR
-    await clinet.chat2.get_avatar(char=char)
+    await client.chat2.get_avatar(char=char)
 
     # CREATE IMAGE
-    async with clinet.connect(owner_id) as chat2:
-        # RETUR MESSAGE + IMAGE LINK 
-        await chat2.create_img(char=char,text=message,
-                               author_name='FALCO',
-                               Return_all=True)
-        # RETURN IMAGE LINK
-        await chat2.create_img(char=char,text=message,
-                               author_name='FALCO',
-                               Return_img=True)
-        
+    async with client.connect(owner_id) as chat2:
+        # RETURN MESSAGE + IMAGE LINK
+        await chat2.create_img(char=char, text=message, author_name='FALCO', Return_all=True)
+        # RETURN IMAGE LINK ONLY
+        await chat2.create_img(char=char, text=message, author_name='FALCO', Return_img=True)
+
     # SEND MESSAGE
-    async with clinet.connect(owner_id) as chat2:
-        # RETURN W NAME {(CHAR NAME) + MESSAGE}
-        await chat2.send_message(char=char,
-                                 text=message,
-                                 author_name="FALCO",
-                                 Return_name=True)
-        
-        # RETURN WITHOUT NAME (MESSAGE)
-        await chat2.send_message(char=char,
-                                 text=message,
-                                 author_name="FALCO",
-                                 Return_name=False)
-    
-    # NEW CHAT
-    async with clinet.connect(owner_id) as chat2:
-        # RETURN WITH GREETING
-        await chat2.new_chat(char=char,with_greeting=True)
+    async with client.connect(owner_id) as chat2:
+        # RETURN MESSAGE WITH NAME
+        await chat2.send_message(char=char, text=message, author_name="FALCO", Return_name=True)
+        # RETURN MESSAGE WITHOUT NAME
+        await chat2.send_message(char=char, text=message, author_name="FALCO", Return_name=False)
 
-        # RETURN WITHOUT GREETING 
-        await chat2.new_chat(char=char,with_greeting=False)
+    # START A NEW CHAT
+    async with client.connect(owner_id) as chat2:
+        # WITH GREETING
+        await chat2.new_chat(char=char, with_greeting=True)
+        # WITHOUT GREETING
+        await chat2.new_chat(char=char, with_greeting=False)
 
-    # DELATE MESSAGE 
-    async with clinet.connect(owner_id) as chat2:
-        # GET TURN ID FROM HISTORY FUNCTION!
-        await chat2.delete_message(char=char, turn_ids=trun_id)
+    # DELETE MESSAGE
+    async with client.connect(owner_id) as chat2:
+        # GET TURN ID FROM HISTORY FUNCTION
+        await chat2.delete_message(char=char, turn_ids=turn_id)
 ```
-
-## 🌟 Star History
-
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=FalcoTK/PyCAI2&type=Date" />
- </picture>
-</a>

@@ -28,7 +28,8 @@ If you find this project useful, please consider giving it a ⭐ on GitHub!
 
 ## This project is proudly sponsored by:
 
-[![GXVirtual](https://www.gxvirtual.site/src/Image/icon/GXVirtualID.png)](https://www.gxvirtual.site)
+[<img src="https://www.gxvirtual.site/src/Image/icon/GXVirtualID.png" alt="GXVirtual" width="100">](https://www.gxvirtual.site)
 
 Visit our sponsor's website at [www.gxvirtual.site](https://www.gxvirtual.site).
+
 

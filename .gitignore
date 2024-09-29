@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+
+# Python packaging files
+*.egg-info/
+
+# Sensitive or secret files
+message.py  # Add this to protect sensitive information in that file
+
+# Other sensitive or generated files
+rtc2.py
+rtcweb.py
+super.py
+testutill.py
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+*.sublime-workspace

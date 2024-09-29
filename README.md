@@ -1,4 +1,4 @@
-![Header](https://raw.githubusercontent.com/FalcoTK/PyCAI3/main/PyCai%20v3.png "header")
+![Header](https://raw.githubusercontent.com/FalcoTK/character-ai/main/PyCai%20v3.png "header")
 <div align="center">
 <pre>
 Character AI API Wrapper (v3)
